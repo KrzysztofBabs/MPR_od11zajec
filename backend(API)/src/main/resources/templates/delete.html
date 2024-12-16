@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>usun auto</h1>
+
+<form action="#" th:action="@{/view/delete}"
+th:object="${Auto}" method="post">
+<table border="1">
+  <tr>
+    <td><input id="id" type="number" th:field="*{id}"/></td>
+  </tr>
+  <tr>
+    <td><input id="submit" type="submit" value="Submit"/></td>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>
