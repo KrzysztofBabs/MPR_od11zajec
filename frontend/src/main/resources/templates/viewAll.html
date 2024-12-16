@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h1 th:text="${message}"></h1>-->
+<h1>auta</h1>
+
+<table>
+    <tr>
+    <td>id</td>
+    <td>model</td>
+    <td>rokProdukcji</td>
+    <td>identyfikator</td>
+    </tr>
+
+<tr th:each="auto: ${Auta}">
+    <td th:text="${auto.id}"></td>
+    <td th:text="${auto.model}"></td>
+    <td th:text="${auto.rokProdukcji}"></td>
+    <td th:text="${auto.identyfikator}"></td>
+
+</tr>
+</table>
+</form>
+
+
+
+
+
+
+</body>
+</html>
