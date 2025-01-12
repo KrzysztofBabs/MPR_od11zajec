@@ -2,28 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dodawanie auta</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            color: #333;
+        }
+
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+        }
+
+
+        form {
+            width: 50%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="submit"] {
+            width: 80%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </head>
 <body>
-<h1>dodaj auto</h1>
-<!--/view/add wskazuje na nawiasy w @GetMapping w MyViewController-->
-<form action="#" th:action="@{/view/add}"
-      th:object="${Auto}" method="post">
-  <table border="1">
-    <tr>
-      <td><input id="model" type="text" th:field="*{model}"/></td>
-    </tr>
-    <tr>
-      <td><input id= "rokP" type="number" th:field="*{rokProdukcji}"/></td>
-    </tr>
-    <tr>
-      <td><input id="submit" type="submit" value="Submit"/></td>
-    </tr>
-  </table>
-</form>
+
+<div class="container">
+    <h1>Dodaj Auto</h1>
 
 
+    <form action="#" th:action="@{/view/add}" th:object="${Auto}" method="post">
+        <input id="model" type="text" th:field="*{model}" placeholder="Wprowadź model auta"/>
+        <input id="rokP" type="number" th:field="*{rokProdukcji}" placeholder="Wprowadź rok produkcji"  />
+        <input type="submit" value="Dodaj auto"/>
+    </form>
+</div>
 
 </body>
-
 </html>

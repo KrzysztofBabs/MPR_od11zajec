@@ -2,34 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lista Aut</title>
+    <style>
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+
+        td {
+            font-size: 1rem;
+        }
+
+
+        .action-button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        .add-link {
+            display: block;
+            width: 250px; /* Większa szerokość */
+            margin: 30px auto; /* Wyrównanie na środku z większą przestrzenią */
+            padding: 15px;
+            text-align: center;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            font-size: 18px; /* Zwiększenie rozmiaru tekstu */
+            font-weight: bold; /* Pogrubienie tekstu */
+            border-radius: 8px; /* Zaokrąglenie rogów */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Płynna zmiana koloru tła */
+        }
+
+        .add-link:hover {
+            background-color: #218838; /* Zmiana koloru na ciemniejszy przy hover */
+        }
+
+    </style>
 </head>
 <body>
-<!--<h1 th:text="${message}"></h1>-->
-<h1>auta</h1>
+
+<h1>Lista Aut</h1>
 
 <table>
     <tr>
-    <td>id</td>
-    <td>model</td>
-    <td>rokProdukcji</td>
-    <td>identyfikator</td>
+        <th>ID</th>
+        <th>Model</th>
+        <th>Rok Produkcji</th>
+        <th>Identyfikator</th>
+
     </tr>
 
-<tr th:each="auto: ${Auta}">
-    <td th:text="${auto.id}"></td>
-    <td th:text="${auto.model}"></td>
-    <td th:text="${auto.rokProdukcji}"></td>
-    <td th:text="${auto.identyfikator}"></td>
+    <!-- Przykład wypełnionej tabeli -->
+    <tr th:each="auto: ${Auta}">
+        <td th:text="${auto.id}"></td>
+        <td th:text="${auto.model}"></td>
+        <td th:text="${auto.rokProdukcji}"></td>
+        <td th:text="${auto.identyfikator}"></td>
 
-</tr>
+
+        </td>
+    </tr>
+
 </table>
-</form>
-
-
-
-
-
+<a href="/view/add" class="add-link">Dodaj nowe auto</a>
+<a href="/view/delete" class="add-link">Usun jakies auto</a>
+<a href="/view/update" class="add-link">Zaaktualizuj jakies auto</a>
 
 </body>
 </html>
