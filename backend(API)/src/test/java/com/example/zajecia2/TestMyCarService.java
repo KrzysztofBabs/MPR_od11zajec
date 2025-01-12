@@ -108,7 +108,7 @@ public class TestMyCarService {
             when(autoRepository.findById(id)).thenReturn(Optional.of(existingAuto));  // Zwracamy istniejący obiekt
 
             // Wywołanie metody
-            autoService.update(autoToUpdate);  // Metoda update ma zaktualizować dane
+            autoService.update1(autoToUpdate);  // Metoda update ma zaktualizować dane
 
             // Weryfikacja, że repozytorium zapisało zaktualizowany obiekt
             verify(autoRepository).save(any(Auto.class));  // Sprawdzamy, czy save() zostało wywołane

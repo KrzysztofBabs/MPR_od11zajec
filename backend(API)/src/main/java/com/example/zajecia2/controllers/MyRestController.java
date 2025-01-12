@@ -1,5 +1,8 @@
 package com.example.zajecia2.controllers;
 
+import com.example.zajecia2.exceptions.CantDeleteAuto_NotFoundException;
+import com.example.zajecia2.exceptions.ExceptionHandler;
+import com.example.zajecia2.exceptions.NotFoundException;
 import com.example.zajecia2.model.Auto;
 import com.example.zajecia2.services.AutoService;
 import com.example.zajecia2.services.PDFGenerator;
@@ -7,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -32,7 +37,7 @@ public class MyRestController {
 
     // wyswietlenie aut z repozytorium
     @GetMapping("/auta/zRepo")
-    public List<Auto> WyswietlAuta(){
+    public List<Auto> wyswietlAuta1(){
         return autoService.getAll();
     }
 
@@ -48,14 +53,14 @@ public class MyRestController {
 
     // wyszukanie auta po modelu z repozytorium
     @GetMapping("/auto/model/{model}")
-    public List<Auto> GetByModel(@PathVariable String model){
+    public List<Auto> getByModel(@PathVariable String model){
         return autoService.getByModel(model);
     }
 
 
     // wyszukanie auta po roku produkcji z repozytorium
     @GetMapping("/auto/rokProdukcji/{rokProdukcji}")
-    public List<Auto> GetByRokProdukcji(@PathVariable int rokProdukcji){
+    public List<Auto> getByRokProdukcji(@PathVariable int rokProdukcji){
         return autoService.getByRokProdukcji(rokProdukcji);
     }
 
@@ -76,7 +81,7 @@ public class MyRestController {
     // aktualizacja auto z repozytorium po ID
     @PatchMapping("/auto/update")
     public void aktualizujAuto(@RequestBody Auto auto){
-        autoService.update(auto);
+        autoService.update1(auto);
     }
 
 
@@ -98,7 +103,7 @@ public class MyRestController {
 
     //pierwsza duza reszta male
     @GetMapping("/auta/zRepoo")
-    public List<Auto> WyswietlAutaa(){
+    public List<Auto> wyswietlAuta2(){
         return autoService.getFirstLetterBiggerRestLower();
     }
 
@@ -113,7 +118,7 @@ public class MyRestController {
     }
 
     @GetMapping("/autoo/id/{id}")
-    public ResponseEntity<Optional<Auto>> GetById(@PathVariable Long id){
+    public ResponseEntity<Optional<Auto>> getById(@PathVariable Long id){
         return new ResponseEntity<>(autoService.getById(id),HttpStatus.OK);
     }
 
@@ -126,21 +131,35 @@ public class MyRestController {
 
 //    aktualizacja po id. Wszytsko inne sie zmienia
     @PutMapping("/autko/update")
-    public ResponseEntity<Auto> AktualizujAuto(@RequestBody Auto auto){
-        autoService.Update(auto);
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Auto> aktualizujAuto2(@RequestBody Auto auto){
+        autoService.updatee(auto);
+        return new ResponseEntity<>(HttpStatus.OK);
+//        http status z badrequest na ok
 
     }
 
     @DeleteMapping("/auto/usunn/{model}")
-    public ResponseEntity<Auto> usunAutoo(@PathVariable String model){
-        autoService.DeleteAuto(model);
+    public ResponseEntity<Auto> usunAutoPoModelu(@PathVariable String model){
+        autoService.deleteAuto1(model);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @DeleteMapping("/auto/wyrzuc/{id}")
+    public ResponseEntity<String> usunAutoPoId(@PathVariable Long id){
+        if(!autoService.existsById(id)){
+            throw new CantDeleteAuto_NotFoundException();
+
+        }
+            autoService.deleteAutoById(id);
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
+
+
+
+
     @PostMapping("/Auto/dodaj")
-    public ResponseEntity<Auto> DDodajAuto(@RequestBody Auto auto){
-        autoService.Add(auto);
+    public ResponseEntity<Auto> dodajAuto2(@RequestBody Auto auto){
+        autoService.add1(auto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -167,29 +186,6 @@ public class MyRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

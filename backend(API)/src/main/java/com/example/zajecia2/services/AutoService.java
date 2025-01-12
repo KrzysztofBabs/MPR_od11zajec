@@ -84,7 +84,7 @@ public class AutoService{
     }
     // zajecia 5 koniec
 
-    public void update(Auto auto){
+    public void update1(Auto auto){
         Long id = auto.getId();
         String model = auto.getModel();
         int rokProdukcji = auto.getRokProdukcji();
@@ -107,7 +107,7 @@ public class AutoService{
     public Optional<Auto> getById(Long id){
         Optional<Auto> auto = this.repository.findById(id);
         if(auto.isEmpty()){
-            throw new NotFoundException();
+            throw new NotFoundException("a");
         }
         else{
             return Optional.of(auto.get());
@@ -126,7 +126,7 @@ public class AutoService{
 
     }
 
-    public void DeleteAuto(String model){
+    public void deleteAuto1(String model){
 //        List<Auto> a = this.repository.findByModel(model); to usuwalo tylko jedna toyote
 
         //to usuwa np wszytskie toyoty z repozytorium
@@ -138,7 +138,7 @@ public class AutoService{
 //        this.repository.deleteById();
     }
 
-    public void Update(Auto auto){
+    public void updatee(Auto auto){
         Long id = auto.getId();
         String model = auto.getModel();
         int rokProdukcji = auto.getRokProdukcji();
@@ -156,7 +156,7 @@ public class AutoService{
 
     }
 
-    public void Add(Auto auto){
+    public void add1(Auto auto){
         if(auto.getModel()==null || auto.getModel().isEmpty()){
             throw new CantAddAuto_IncorrectData("nie ma podanego modelu");
         }
@@ -193,7 +193,15 @@ public class AutoService{
     // usuneicie po id w formularzu
     public void deleteAutoById(Long id){
         Optional<Auto> auto = this.repository.findById(id);
+//        if (!repository.existsById(id)) {
+//            throw new CantDeleteAuto_NotFoundException();
+//        }
         this.repository.delete(auto.get());
+
+    }
+
+    public boolean existsById(Long id) {
+        return repository.existsById(id);
     }
 
 
