@@ -5,6 +5,7 @@ import com.example.zajecia2.exceptions.CantUpdateAuto_NotFoundException;
 import com.example.zajecia2.exceptions.NotFoundException;
 import com.example.zajecia2.model.Auto;
 import com.example.zajecia2.services.AutoService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -55,14 +56,16 @@ public class MyViewController {
 //
 //    }
 @PostMapping("/view/delete")
-public String deleteCar(@RequestParam("id") Long id, Model model) {
-    try {
-        autoService.deleteById(id);
-    } catch (NotFoundException ex) {
-        model.addAttribute("errorMessage", ex.getMessage());  // Dodanie komunikatu błędu do modelu
-        return "errorPage";  // Strona wyświetlająca komunikat błędu
+public String deleteCar(@RequestParam("id") Long id, Model model){
+    try{
+         autoService.deleteById(id);
+
+
+    }catch(NotFoundException ex){
+        model.addAttribute("errorMessage", ex.getMessage());
+        return "errorPage";
     }
-    return "redirect:/view/all";  // Przekierowanie po pomyślnym usunięciu
+    return "redirect:/view/all";
 }
 
 
