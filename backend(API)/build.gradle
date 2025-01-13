@@ -32,6 +32,13 @@ dependencies {
 
 	testImplementation 'org.mockito:mockito-core:4.0.0'
 
+	// https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+	testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.0'
+
+	// https://mvnrepository.com/artifact/org.hamcrest/hamcrest-library
+	testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '3.0'
+
+
 
 
 

@@ -110,26 +110,38 @@ public class TestyOstateczneRestControlera {
         verify(mockAutoService,times(1)).delete(modelDoUsuniecia);
 
     }
+    @Test
+    public void testAktualizujAuto(){
+        AutoService mockAutoService=mock(AutoService.class);
+        MyRestController myRestController= new MyRestController(mockAutoService);
+        Auto autoDoAktualizacji = new Auto("Toyota",2000);
+        myRestController.aktualizujAuto(autoDoAktualizacji);
+        verify(mockAutoService).update1(autoDoAktualizacji);
+
+    }
+
 //    @Test
-//    public void testAktualizujAuto(){
-//        AutoService mockAutoService=mock(AutoService.class);
-//        MyRestController myRestController= new MyRestController(mockAutoService);
-//        Auto autoDoAktualizacji = new Auto("Toyota",2000);
-//        myRestController.aktualizujAuto(autoDoAktualizacji);
-//        verify(mockAutoService).update1(autoDoAktualizacji);
+//    public void testAktualizujAuto() throws Exception {
+//        Auto autoDoAktualizacji = new Auto("Toyota", 2000);
 //
+//        mockMvc.perform(patch("/auto/update")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content("{\"model\": \"Toyota\", \"rokProdukcji\": 2000}"))
+//                .andExpect(status().isOk());
+//
+//        verify(mockAutoService, times(1)).update1(autoDoAktualizacji);
 //    }
 
     @Test
-    public void testAktualizujAuto() throws Exception {
-        Auto autoDoAktualizacji = new Auto("Toyota", 2000);
+    public void testDodajAuto(){
+        AutoService mockAutoService=mock(AutoService.class);
+        MyRestController myRestController= new MyRestController(mockAutoService);
+        Auto autoDoDodania = new Auto("Toyota",2000);
+        myRestController.dodajAuto(autoDoDodania);
+        verify(mockAutoService).add(autoDoDodania);
 
-        mockMvc.perform(patch("/auto/update")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"model\": \"Toyota\", \"rokProdukcji\": 2000}"))
-                .andExpect(status().isOk());
-
-        verify(mockAutoService, times(1)).update1(autoDoAktualizacji);
     }
+
+
 
 }

@@ -89,23 +89,23 @@ public class MyRestController {
     //zajecia5
 
     //zamiana na duze litery
-    @PostMapping("/auto/dodajj")
-    public void dodajAutoDuzeLitery(@RequestBody Auto auto){
-        autoService.addupper(auto);
-    }
+//    @PostMapping("/auto/dodajj")
+//    public void dodajAutoDuzeLitery(@RequestBody Auto auto){
+//        autoService.addupper(auto);
+//    }
 
 
     //zamiana na male litery
-    @PostMapping("/auto/dodajjj")
-    public void dodajAutoMaleLitery(@RequestBody Auto auto){
-        autoService.addlower(auto);
-    }
+//    @PostMapping("/auto/dodajjj")
+//    public void dodajAutoMaleLitery(@RequestBody Auto auto){
+//        autoService.addlower(auto);
+//    }
 
     //pierwsza duza reszta male
-    @GetMapping("/auta/zRepoo")
-    public List<Auto> wyswietlAuta2(){
-        return autoService.getFirstLetterBiggerRestLower();
-    }
+//    @GetMapping("/auta/zRepoo")
+//    public List<Auto> wyswietlAuta2(){
+//        return autoService.getFirstLetterBiggerRestLower();
+//    }
 
 
 
@@ -165,27 +165,27 @@ public class MyRestController {
 
 //    zajecia7
 
-    @GetMapping("/auto/wyszukaj/poID/{id}/pdf")
+//    @GetMapping("/auto/wyszukaj/poID/{id}/pdf")
 
-    public ResponseEntity<byte[]> getObjectPdf(@PathVariable Long id) {
-        try {
-            Auto auto = autoService.findById(id);
-            byte[] pdfBytes = PDFGenerator.generatePdf(auto);
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Disposition", "inline; filename=auto_" + id + ".pdf");
-
-            return ResponseEntity.ok()
-                    .headers(headers)
-                    .contentType(org.springframework.http.MediaType.APPLICATION_PDF)
-                    .body(pdfBytes);
-
-        }catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
+//    public ResponseEntity<byte[]> getObjectPdf(@PathVariable Long id) {
+//        try {
+//            Auto auto = autoService.findById(id);
+//            byte[] pdfBytes = PDFGenerator.generatePdf(auto);
+//
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.add("Content-Disposition", "inline; filename=auto_" + id + ".pdf");
+//
+//            return ResponseEntity.ok()
+//                    .headers(headers)
+//                    .contentType(org.springframework.http.MediaType.APPLICATION_PDF)
+//                    .body(pdfBytes);
+//
+//        }catch (IllegalArgumentException e) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+//        }catch (IOException e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+//        }
+//    }
 
 
 }

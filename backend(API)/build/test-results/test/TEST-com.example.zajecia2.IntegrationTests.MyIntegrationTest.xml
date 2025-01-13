@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.zajecia2.IntegrationTests.MyIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-13T09:06:09" hostname="GDA303-12" time="1.346">
+  <properties/>
+  <testcase name="test2()" classname="com.example.zajecia2.IntegrationTests.MyIntegrationTest" time="1.346"/>
+  <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
